@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "virecadf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://virecroundtwo.dfs.core.windows.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0207-234341-9i6dt12"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/1cf1a497-23f9-40eb-8a05-e23b72149b49/resourceGroups/amir/providers/Microsoft.Storage/storageAccounts/virecroundtwo"
+		}
+	}
+}
