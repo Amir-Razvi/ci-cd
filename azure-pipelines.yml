@@ -1,19 +1,27 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
+- main  # Runs the pipeline when the main branch is updated
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'  # Use Microsoft-hosted agent
+
+variables:
+  resourceGroupName: 'amir'
+  dataFactoryName: 'secondadff'
+  location: 'Canada Central'  # Change based on your region
+  templateFile: 'ARMTemplateForFactory.json'
+  parametersFile: 'ARMTemplateParametersForFactory.json'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'Deploy ARM Template to ADF'
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'connectionboi'  # Create this in DevOps
+    subscriptionId: '1cf1a497-23f9-40eb-8a05-e23b72149b49'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resourceGroupName)'
+    location: '$(location)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(templateFile)'
+    csmParametersFile: '$(parametersFile)'
+    deploymentMode: 'Incremental'  # Ensures only changes are deployed
