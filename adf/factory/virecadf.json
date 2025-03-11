@@ -1,0 +1,9 @@
+{
+	"name": "virecadf",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "868487e1-415f-4cdb-8fa2-d781cfa99616",
+		"tenantId": "bf744b93-bf76-404b-b4f7-2d85d553323d"
+	}
+}

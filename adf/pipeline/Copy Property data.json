@@ -1,0 +1,361 @@
+{
+	"name": "Copy Property data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_2mp",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "raw//property_data.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.Staging_Properties_data"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PropertyID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PropertyID",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Address",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Province",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Province",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PostalCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "OwnerID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OwnerID",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Cooling",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Cooling",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Basement",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Basement",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Flooring",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Flooring",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "HOA_Fees",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HOA_Fees",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PropertyTax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PropertyTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NearbySchools",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NearbySchools",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LastSoldDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LastSoldDate",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "Garage",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Garage",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "HasPool",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HasPool",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "LotSize",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LotSize",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Zoning",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Zoning",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Heating",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Heating",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PropertyType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PropertyType",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Bedrooms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Bedrooms",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Bathrooms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Bathrooms",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "SquareFeet",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SquareFeet",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "YearBuilt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "YearBuilt",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Price",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_2mp",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_2mp",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-08T05:26:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

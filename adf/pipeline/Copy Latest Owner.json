@@ -1,0 +1,157 @@
+{
+	"name": "Copy Latest Owner",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_43j",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "raw//latest_owner_update_data.json"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.Latest_Owners"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['OwnerID']"
+								},
+								"sink": {
+									"name": "OwnerID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OwnerType']"
+								},
+								"sink": {
+									"name": "OwnerType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Country']"
+								},
+								"sink": {
+									"name": "Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OwnerName']"
+								},
+								"sink": {
+									"name": "OwnerName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['FullName']"
+								},
+								"sink": {
+									"name": "FullName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['Address']"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['DateOfBirth']"
+								},
+								"sink": {
+									"name": "DateOfBirth",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['PhoneNumber']"
+								},
+								"sink": {
+									"name": "PhoneNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['MaritalStatus']"
+								},
+								"sink": {
+									"name": "MaritalStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['Occupation']"
+								},
+								"sink": {
+									"name": "Occupation",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_43j",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_43j",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-08T05:26:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

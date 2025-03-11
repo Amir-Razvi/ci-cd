@@ -1,0 +1,88 @@
+{
+	"name": "SourceDataset_1cf",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "owner_data.json",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"OwnerID": {
+					"type": "integer"
+				},
+				"OwnerType": {
+					"type": "string"
+				},
+				"Country": {
+					"type": "string"
+				},
+				"OwnerName": {
+					"type": "string"
+				},
+				"PersonalDetails": {
+					"type": "object",
+					"properties": {
+						"FullName": {
+							"type": "string"
+						},
+						"Address": {
+							"type": "string"
+						},
+						"DateOfBirth": {
+							"type": "string"
+						},
+						"PhoneNumber": {
+							"type": "string"
+						},
+						"MaritalStatus": {
+							"type": "string"
+						},
+						"Occupation": {
+							"type": "string"
+						}
+					}
+				},
+				"BusinessDetails": {
+					"type": "object",
+					"properties": {
+						"BusinessName": {
+							"type": "string"
+						},
+						"BusinessAddress": {
+							"type": "string"
+						},
+						"GovernmentBusinessID": {
+							"type": "string"
+						},
+						"Industry": {
+							"type": "string"
+						},
+						"AnnualRevenue": {
+							"type": "integer"
+						},
+						"EmployeeCount": {
+							"type": "integer"
+						},
+						"BusinessType": {
+							"type": "string"
+						},
+						"BusinessEntityType": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,229 @@
+{
+	"name": "Copy Owner data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_1cf",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "raw//owner_data.json"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.Staging_Owners_Data"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['OwnerID']"
+								},
+								"sink": {
+									"name": "OwnerID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OwnerType']"
+								},
+								"sink": {
+									"name": "OwnerType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Country']"
+								},
+								"sink": {
+									"name": "Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['OwnerName']"
+								},
+								"sink": {
+									"name": "OwnerName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['FullName']"
+								},
+								"sink": {
+									"name": "FullName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['Address']"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['DateOfBirth']"
+								},
+								"sink": {
+									"name": "DateOfBirth",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['PhoneNumber']"
+								},
+								"sink": {
+									"name": "PhoneNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['MaritalStatus']"
+								},
+								"sink": {
+									"name": "MaritalStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['PersonalDetails']['Occupation']"
+								},
+								"sink": {
+									"name": "Occupation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['BusinessName']"
+								},
+								"sink": {
+									"name": "BusinessName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['BusinessAddress']"
+								},
+								"sink": {
+									"name": "BusinessAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['GovernmentBusinessID']"
+								},
+								"sink": {
+									"name": "GovernmentBusinessID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['Industry']"
+								},
+								"sink": {
+									"name": "Industry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['AnnualRevenue']"
+								},
+								"sink": {
+									"name": "AnnualRevenue",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['EmployeeCount']"
+								},
+								"sink": {
+									"name": "EmployeeCount",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['BusinessType']"
+								},
+								"sink": {
+									"name": "BusinessType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['BusinessDetails']['BusinessEntityType']"
+								},
+								"sink": {
+									"name": "BusinessEntityType",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_1cf",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_1cf",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-08T05:26:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

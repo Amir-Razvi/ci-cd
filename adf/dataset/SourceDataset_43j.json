@@ -1,0 +1,62 @@
+{
+	"name": "SourceDataset_43j",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "latest_owner_update_data.json",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"OwnerID": {
+					"type": "integer"
+				},
+				"OwnerType": {
+					"type": "string"
+				},
+				"Country": {
+					"type": "string"
+				},
+				"OwnerName": {
+					"type": "string"
+				},
+				"PersonalDetails": {
+					"type": "object",
+					"properties": {
+						"FullName": {
+							"type": "string"
+						},
+						"Address": {
+							"type": "string"
+						},
+						"DateOfBirth": {
+							"type": "string"
+						},
+						"PhoneNumber": {
+							"type": "string"
+						},
+						"MaritalStatus": {
+							"type": "string"
+						},
+						"Occupation": {
+							"type": "string"
+						}
+					}
+				},
+				"BusinessDetails": {
+					"type": "null"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
